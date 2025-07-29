@@ -1,9 +1,4 @@
 import model.Ninios;
-import model.Inventario;
-import model.Habitaciones;
-import model.Trabajadores;
-import model.Orfanato;
-
 import java.util.ArrayList;
 
 public class OrfanatoController {
@@ -17,15 +12,15 @@ public class OrfanatoController {
         nino1.nacionalidad = "Guatemalteco";
 
         Ninios nino2 = new Ninios("Sofía", 6);
-        nino2.nacionalidad = "Hondureña";
+        nino2.nacionalidad = "Beliceña";
 
         Ninios nino3 = new Ninios("Carlos", 8);
         nino3.nacionalidad = "Salvadoreño";
 
         // Agregar los niños a la lista
-        listaNinios.add(nino1);
-        listaNinios.add(nino2);
-        listaNinios.add(nino3);
+        listaNinios.add(ninio1);
+        listaNinios.add(ninio2);
+        listaNinios.add(ninio3);
 
         // Mostrar la información y ejecutar acciones
         for (Ninios n : listaNinios) {
