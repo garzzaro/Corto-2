@@ -1,0 +1,76 @@
+import model.Ninios;
+import model.Inventario;
+import model.Habitaciones;
+import model.Trabajadores;
+import model.Orfanato;
+
+public class OrphanageController {
+
+    private ninio ninio;
+
+    public OrphanageController() {
+
+        Trabajador trabajador = new Trabajador("Trabajador", 30);
+        this.habitacion = new Habitacion(10.0, 20, trabajador); 
+    }
+
+    // Cage management methods
+    public void agregarGallina(String nombre) {
+        Gallina nuevaGallina = new Gallina(nombre);
+        if (jaula.addAnimal(nuevaGallina)) {
+            System.out.println("Gallina " + nombre + " agregada a la jaula exitosamente.");
+        } else {
+            System.out.println("No se pudo agregar la gallina. La jaula está llena.");
+        }
+    }
+
+    public void agregarGallo(String nombre, String raza) {
+        Gallo nuevoGallo = new Gallo(nombre, raza);
+        if (jaula.addAnimal(nuevoGallo)) {
+            System.out.println("Gallo " + nombre + " de raza " + raza + " agregado a la jaula exitosamente.");
+        } else {
+            System.out.println("No se pudo agregar el gallo. La jaula está llena.");
+        }
+    }
+
+    public void agregarPollito(String nombre) {
+        Pollito nuevoPollito = new Pollito(nombre);
+        if (jaula.addAnimal(nuevoPollito)) {
+            System.out.println("Pollito " + nombre + " agregado a la jaula exitosamente.");
+        } else {
+            System.out.println("No se pudo agregar el pollito. La jaula está llena.");
+        }
+    }
+
+    public void sacarTodosAnimales() {
+        jaula.vaciar();
+        System.out.println("Todos los animales han sido sacados de la jaula.");
+    }
+
+    public void sacarAnimal(String nombre) {
+        if (jaula.removeAnimal(nombre)) {
+            System.out.println("Animal " + nombre + " removido de la jaula exitosamente.");
+        } else {
+            System.out.println("No se encontró un animal con el nombre " + nombre + " en la jaula.");
+        }
+    }
+
+    public void mostrarAnimalesEnJaula() {
+        System.out.println("Animales en la jaula:");
+        if (jaula.getCantidadAnimales() == 0) {
+            System.out.println("La jaula está vacía.");
+        } else {
+            for (int i = 0; i < jaula.getCantidadAnimales(); i++) {
+                if (jaula.getAnimales()[i] != null) {
+                    System.out.println("- " + jaula.getAnimales()[i].getClass().getSimpleName() + 
+                                     ": " + jaula.getAnimales()[i].getNombre());
+                }
+            }
+        }
+        System.out.println("Total de animales: " + jaula.getCantidadAnimales());
+    }
+
+    public void limpiarJaula() {
+        jaula.limpiar();
+    }
+}
