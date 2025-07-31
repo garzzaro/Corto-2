@@ -1,8 +1,8 @@
 public class Habitaciones {
     //Atributos
-    public int numCuarto;
-    public int personasHabitacion;
-    public int camas;
+    private int numCuarto;
+    private int personasHabitacion;
+    private int camas;
      //Constructor
     public Habitaciones(int numCuarto, int personasHabitacion, int camas) {
         this.numCuarto = numCuarto;
@@ -16,6 +16,9 @@ public class Habitaciones {
 
     public void getPersonasHabitacion() {
         System.out.println("Hay " + personasHabitacion + " personas en el cuarto #" + numCuarto + ".");
+    }
+    public int getNumCuarto() {
+        return numCuarto;
     }
 }
 
