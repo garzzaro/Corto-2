@@ -1,40 +1,69 @@
-import model.Ninios;
-import model.Inventario;
-import model.Habitaciones;
-import model.Trabajadores;
-import model.Orfanato;
+public class OrfanatoControler {
+    // Atributos
+    private Ninios ninios;
+    private Trabajadores trabajadores;
+    private OrfanatoVista vista;
 
-import java.util.ArrayList;
+    // Constructor
+    public OrfanatoControler(OrfanatoVista vista) {
+        this.vista = vista;
+        inicializarOrfanato();
+    }
 
-public class OrfanatoController {
+    private void inicializarOrfanato() {
+      
+        String nombreninos = vista.pedirTexto("Ingrese el nombre del niño: ");
+        int edadninos = vista.pedirEntero("Ingrese la edad del niño: ");
+        ninios = new Ninios(nombreninos, edadninos);
 
-    public static void main(String[] args) {
-        // Crear una lista para almacenar a los niños
-        ArrayList<Ninios> listaNinios = new ArrayList<>();
+        String nombreTrabajador = vista.pedirTexto("Ingrese el nombre del trabajador: ");
+        String cargoTrabajador = vista.pedirTexto("Ingrese el cargo del trabajador: ");
+        float salarioTrabajador = vista.pedirEntero("Ingrese el salario del trabajador: ");
+        int edadTrabajador = vista.pedirEntero("Ingrese la edad del trabajador: ");
+        trabajadores = new Trabajadores(nombreTrabajador, cargoTrabajador, salarioTrabajador, edadTrabajador);
+            
+    }
 
-        // Crear objetos de tipo Ninios
-        Ninios nino1 = new Ninios("Luis", 7);
-        nino1.nacionalidad = "Guatemalteco";
+    public void ejecutarMenu() {
+        int opcion;
+        do {
+            vista.mostrarMenu();
+            opcion = vista.pedirOpcion();
 
-        Ninios nino2 = new Ninios("Sofía", 6);
-        nino2.nacionalidad = "Hondureña";
-
-        Ninios nino3 = new Ninios("Carlos", 8);
-        nino3.nacionalidad = "Salvadoreño";
-
-        // Agregar los niños a la lista
-        listaNinios.add(nino1);
-        listaNinios.add(nino2);
-        listaNinios.add(nino3);
-
-        // Mostrar la información y ejecutar acciones
-        for (Ninios n : listaNinios) {
-            System.out.println("Nombre: " + n.getNombre());
-            System.out.println("Edad: " + n.edad);
-            System.out.println("Nacionalidad: " + n.nacionalidad);
-            n.verUbicacion();
-            n.caminarrapido();
-            System.out.println();
-        }
+            switch (opcion) {
+                case 1:
+                    ninios.verUbicacion();
+                    break;
+                case 2:
+                    ninios.caminarrapido();
+                    break;
+                case 3:
+                    ninios.caminarlento();
+                    break;
+                case 4:
+                    trabajadores.verInfo();
+                    break;
+                case 5:
+                    trabajadores.verSalario();
+                    break;
+                case 6:
+                    trabajadores.verEdad();
+                    break;
+                case 7:
+                    ninios.presentarse();
+                    break;
+                case 8:
+                    trabajadores.verpresupuesto();
+                    break;
+                case 9:
+                    trabajadores.hablarninio();
+                    break;
+                case 10:
+                    System.out.println("Saliendo del menú...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
+            }
+        } while (opcion != 10);
     }
 }
