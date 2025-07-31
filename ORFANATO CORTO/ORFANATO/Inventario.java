@@ -1,7 +1,7 @@
 public class Inventario {
     //Atributos
-    public String nombre;
-    public int cantidad;
+    private String nombre;
+    private int cantidad;
      //Constructor
     public Inventario(String nombre, int cantidad) {
         this.nombre = nombre;
@@ -15,5 +15,7 @@ public class Inventario {
     public void donaciones() {
         System.out.println("No hay donaciones disponibles por el momento.");
     }
+    public void getRopa() {
+        System.out.println("El inventario contiene ropa.");
+    }
 }
-
